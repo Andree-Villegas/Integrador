@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claro Cloud - Planes y precios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-md">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="{% url 'modo' %}" class="button">
+                    <div class="flex item-center">
+                        <img src="/static/img/ClaroCloud.png" alt="Claro cloud logo" class="h-10">
+                    </div>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="{% url 'perfil' %}" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded shadow mr-2">Perfil</a>
+                    <button class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-grow container mx-auto px-4 mt-8">
+            <div class="flex gap-6">
+                <nav class="w-1/5 bg-white rounded-lg shadow-md p-4 mr-6">
+                    <ul class="space-y-4">
+                        <li><a href="{% url 'dashboard' %}"><button class="w-full text-left py-2 px-4 bg-gray-200 rounded">Panel</button></a></li>
+                        <li><a href="{% url 'trabajadores' %}"><button class="w-full text-left py-2 px-4 hover:bg-gray-100 rounded">Trabajadores</button></a></li>
+                        <li><a href="{% url 'clientes' %}"><button class="w-full text-left py-2 px-4 hover:bg-gray-100 rounded">Clientes</button></a></li>
+                        <li><a href="{% url 'serviciopremium' %}"><button class="w-full text-left py-2 px-4 hover:bg-gray-100 rounded">Servicio Premium</button></a></li>
+                    </ul>
+                </nav>
+
+                <main class="w-3/4">
+                    <h1 class="text-2xl font-bold mb-6">Planes y Precios</h1>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white border border-gray-300 rounded p-6">
+                            <h2 class="text-xl font-semibold mb-4">Mensual</h2>
+                            <div class="mb-4">
+                                <h3 class="font-semibold mb-2">Descripción</h3>
+                                <p class="text-gray-600">Plan mensual con acceso a todas las funciones de Claro Cloud.</p>
+                            </div>
+                            <div class="mb-4">
+                                <h3 class="font-semibold mb-2">Precio</h3>
+                                <p class="text-2xl font-bold text-red-600">$4.99/mes</p>
+                            </div>
+                            <button class="w-full bg-red-600 text-white rounded px-4 py-2 hover:bg-red-700 transition">Comprar</button>
+                        </div>
+                        <div class="bg-white border border-gray-300 rounded p-6">
+                            <h2 class="text-xl font-semibold mb-4">Anual</h2>
+                            <div class="mb-4">
+                                <h3 class="font-semibold mb-2">Descripción</h3>
+                                <p class="text-gray-600">Plan anual con descuento y acceso a todas las funciones de Claro Cloud.</p>
+                            </div>
+                            <div class="mb-4">
+                                <h3 class="font-semibold mb-2">Precio</h3>
+                                <p class="text-2xl font-bold text-red-600">$49.99/año</p>
+                            </div>
+                            <button class="w-full bg-red-600 text-white rounded px-4 py-2 hover:bg-red-700 transition">Comprar</button>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <footer class="bg-white mt-8">
+            <div class="container mx-auto px-4 py-4 text-center text-gray-600 text-sm">
+                &copy; 2024 Claro Cloud. Todos los derechos reservados.
+            </div>
+        </footer>
+
+    </div>
+</body>
+</html>

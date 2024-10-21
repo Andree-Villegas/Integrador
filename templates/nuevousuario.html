@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claro Cloud - Nuevo Usuario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow-md">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="{% url 'modo' %}" class="button">
+                    <div class="flex item-center">
+                        <img src="/static/img/ClaroCloud.png" alt="Claro cloud logo" class="h-10">
+                    </div>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="{% url 'perfil' %}" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded shadow mr-2">Perfil</a>
+                    <button class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-grow container mx-auto px-4 mt-8">
+            <div class="flex gap-6">
+                <nav class="w-1/5 bg-white rounded-lg shadow-md p-4 mr-6">
+                    <ul class="space-y-4"> 
+                        <li><a href="{% url 'dashboardseguridad' %}"><button class="w-full text-left py-2 px-4 bg-gray-200 rounded">Panel</button></a></li>
+                        <li><a href="{% url 'usuario' %}"><button class="w-full text-left py-2 px-4 hover:bg-gray-100 rounded">Usuarios</button></a></li>
+                        <li><a href="{% url 'tokens' %}"><button class="w-full text-left py-2 px-4 hover:bg-gray-100 rounded">Tokens</button></a></li>
+                        <li><a href="{% url 'monitoreo' %}"><button class="w-full text-left py-2 px-4 hover:bg-gray-100 rounded">Monitoreo</button></a></li>
+                    </ul>
+                </nav>
+
+                <main class="w-4/5">
+                    <h2 class="text-2xl font-bold mb-6">Indicar Nuevo Usuario</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <form>
+                            <div class="mb-4">
+                                <label for="nombre" class="block mb-1">Nombres</label>
+                                <input type="text" id="nombre" class="w-1/2 px-2 py-1 border rounded" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="apellidos" class="block mb-1">Apellidos</label>
+                                <input type="text" id="apellidos" class="w-1/2 px-2 py-1 border rounded" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="correo" class="block mb-1">Correo electrónico</label>
+                                <input type="email" id="correo" class="w-1/2 px-2 py-1 border rounded" required>
+                                <p class="text-sm text-gray-500 mt-1">Esta correo se utilizará para registrarse</p>
+                            </div>
+                            <div class="mb-6">
+                                <label for="rol" class="block mb-1">Rol</label>
+                                <select id="rol" class="w-1/2 px-2 py-1 border rounded" required>
+                                    <option value="" disabled selected>Selecciona un rol</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="usuario">Usuario</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Guardar usuario</button>
+                        </form>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <footer class="bg-white mt-8">
+            <div class="container mx-auto px-4 py-4 text-center text-gray-600 text-sm">
+                &copy; 2024 Claro Cloud. Todos los derechos reservados.
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

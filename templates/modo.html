@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claro Cloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        body {
+            background-color: #f3f4f6;
+        }
+
+        .custom-button {
+            width: 100%;
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease-in-out, transform 0.3s;
+        }
+
+        .custom-button:hover {
+            background-color: #f3f4f6;
+            transform: scale(1.05);
+        }
+
+        .icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #d1d5db;
+            border-radius: 50%;
+            width: 10rem;
+            height: 10rem;
+            margin-bottom: 1rem;
+        }
+
+        .icon-circle i {
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
+        <header class="bg-white shadow-md">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <!-- Botón para que lleve a modo cada vez que hace click en el logo de claro cloud-->
+                <a href="{% url 'modo' %}" class="button">
+                    <div class="flex item-center">
+                        <img src="/static/img/ClaroCloud.png" alt="Claro cloud logo" class="h-10">
+                    </div>
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="{% url 'perfil' %}" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded shadow mr-2">Perfil</a>
+                    <button class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow">Cerrar Sesión</button>
+                </div>
+            </div>
+        </header>
+
+    <main class="flex-grow mt-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Botón Claro Cloud -->
+                <a href="{% url 'dashboard' %}" class="custom-button">
+                    <div class="icon-circle">
+                        <i data-feather="cloud" class="w-20 h-20"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-700">CLARO CLOUD</h2>
+                </a>
+                <!-- Botón Seguridad -->
+                <a href="{% url 'dashboardseguridad' %}" class="custom-button">
+                    <div class="icon-circle">
+                        <i data-feather="shield" class="w-20 h-20"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-700">SEGURIDAD</h2>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white mt-8">
+        <div class="container mx-auto px-4 py-4 text-center text-gray-600 text-sm">
+            &copy; 2024 Claro Cloud. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

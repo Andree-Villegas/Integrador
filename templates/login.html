@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claro Cloud - Iniciar Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <img src="/static/img/ClaroCloud.png" alt="Claro cloud logo" class="h-10">
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-4">
+        <div class="bg-white rounded-lg shadow-md p-8 w-full max-w-md">
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Correo electrónico</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
+                    <input type="password" id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="flex items-center justify-center">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Ingresar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-white mt-8">
+        <div class="container mx-auto px-4 py-4 text-center text-gray-600 text-sm">
+            &copy; 2024 Claro Cloud. Todos los derechos reservados.
+        </div>
+    </footer>
+</body>
+</html>
