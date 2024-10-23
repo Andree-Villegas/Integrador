@@ -10,10 +10,10 @@ class Usuario(models.Model):
     rol = models.CharField(max_length=50)
 
     class Meta:
-        db_table = 'usuario'  # Especifica el nombre exacto de la tabla en tu base de datos
+        db_table = 'usuario'  
 
     def __str__(self):
-        return self.email  # Mostrar el email como representación de usuario
+        return self.email  
 
 # Modelo trabajador
 class Trabajador(models.Model):
