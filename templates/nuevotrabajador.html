@@ -36,30 +36,31 @@
                 <main class="w-4/5">
                     <h2 class="text-2xl font-bold mb-6">Indicar Nuevo Trabajador</h2>
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="mb-4">
-                                <label for="nombre" class="block mb-1">Nombres</label>
-                                <input type="text" id="nombre" name="nombre" class="w-1/2 px-2 py-1 border rounded" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="apellidos" class="block mb-1">Apellidos</label>
-                                <input type="text" id="apellidos" name="apellidos" class="w-1/2 px-2 py-1 border rounded" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="numero_tarjeta" class="block mb-1">Número de tarjeta</label>
-                                <input type="text" id="numero_tarjeta" name="numero_tarjeta" class="w-1/2 px-2 py-1 border rounded" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="correo" class="block mb-1">Correo electrónico</label>
-                                <input type="email" id="correo" name="correo" class="w-1/2 px-2 py-1 border rounded" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="telefono" class="block mb-1">Número de teléfono</label>
-                                <input type="tel" id="telefono" name="telefono" class="w-1/2 px-2 py-1 border rounded" required>
-                            </div>
-                            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Guardar</button>
-                        </form>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-4">
+        <label for="nombres" class="block mb-1">Nombres</label>
+        <input type="text" id="nombres" name="nombres" class="w-1/2 px-2 py-1 border rounded" required>
+    </div>
+    <div class="mb-4">
+        <label for="apellidos" class="block mb-1">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" class="w-1/2 px-2 py-1 border rounded" required>
+    </div>
+    <div class="mb-4">
+        <label for="numtarjeta" class="block mb-1">Número de tarjeta</label>
+        <input type="text" id="numtarjeta" name="numtarjeta" class="w-1/2 px-2 py-1 border rounded" required>
+    </div>
+    <div class="mb-4">
+        <label for="email" class="block mb-1">Correo electrónico</label>
+        <input type="email" id="email" name="email" class="w-1/2 px-2 py-1 border rounded" required>
+    </div>
+    <div class="mb-4">
+        <label for="numtelefono" class="block mb-1">Número de teléfono</label>
+        <input type="tel" id="numtelefono" name="numtelefono" class="w-1/2 px-2 py-1 border rounded" required>
+    </div>
+    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Guardar</button>
+</form>
+
                     </div>
                 </main>
             </div>

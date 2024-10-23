@@ -1,5 +1,6 @@
 from django.db import models
 
+# Modelo Usuario
 class Usuario(models.Model):
     IDusuario = models.AutoField(primary_key=True)  # Clave primaria
     nombres = models.CharField(max_length=100)
@@ -13,3 +14,19 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.email  # Mostrar el email como representación de usuario
+
+# Modelo trabajador
+class Trabajador(models.Model):
+    IDtrabajador = models.AutoField(primary_key=True)
+    nombres = models.CharField(max_length=50)
+    apellidos = models.CharField(max_length=50)
+    numtarjeta = models.CharField(max_length=20, unique=True)
+    email = models.EmailField(max_length=50)
+    numtelefono = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'trabajador'
+        managed = False
+
+    def __str__(self):
+        return f'{self.nombres} {self.apellidos}'

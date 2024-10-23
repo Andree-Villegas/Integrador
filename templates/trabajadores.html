@@ -41,19 +41,42 @@
                 </nav>
 
                 <main class="w-4/5">
-                    <h2 class="text-2xl font-bold mb-6">Trabajadores</h2>
+                    <h2 class="text-2x1 font-bold mb-6">Trabajadores</h2>
                     <div class="bg-white p-6 rounded shadow">
-                        <div class="grid grid-cols-5 gap-4 mb-4 font-bold">
-                            <div>Nombres</div>
-                            <div>Cuentas Bancarias</div>
-                            <div>Correo</div>
-                            <div>Celular</div>
-                            <div></div>
-                        </div>
-                        <div id="personal-list" class="space-y-4">
-                            <!-- Personal items will be dynamically added here -->
-                        </div>
-                        <a href="{% url 'nuevotrabajador' %}" class="mt-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 inline-block text-center">AGREGAR TRABAJADOR</a>
+                        <table class="min-w-full bg-white">
+                            <thead>
+                                <tr>
+                                    <th class="py-2 text-left">Nombres</th>
+                                    <th class="py-2 text-left">Apellidos</th>
+                                    <th class="py-2 text-left">Correo</th>
+                                    <th class="py-2 text-left">Número de Tarjeta</th>
+                                    <th class="py-2 text-left">Teléfono</th>
+                                    <th class="py-2 text-left">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if trabajadores.exists %}
+                                    {% for trabajador in trabajadores %}
+                                    <tr class="border-t">
+                                        <td class="py-2">{{ trabajador.nombres }}</td>
+                                        <td class="py-2">{{ trabajador.apellidos }}</td>
+                                        <td class="py-2">{{ trabajador.email }}</td>
+                                        <td class="py-2">{{ trabajador.numtarjeta }}</td>
+                                        <td class="py-2">{{ trabajador.numtelefono }}</td>
+                                        <td class="py-2">
+                                            <a href="{% url 'editar_trabajador' trabajador.IDtrabajador %}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Editar</a>
+                                            <a href="{%  url 'eliminar_trabajador' trabajador.IDtrabajador %}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded" onclick="return confirm('¿Estás seguro de querer eliminar este trabajador?')">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="6" class="py-4 text-center">No hay trabajadores</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                        <a href="{%  url 'nuevotrabajador' %}" class="mt-6 bg-green-500 text-while px-4 py-2 rounded hover:bg-green-600 inline-block text-center">AGREGAR TRABAJADOR</a>
                     </div>
                 </main>
             </div>
@@ -64,38 +87,6 @@
                 &copy; 2024 Claro Cloud. Todos los derechos reservados.
             </div>
         </footer>
-
     </div>
-
-    <script>
-        const personalList = document.getElementById('personal-list');
-        const agregarBtn = document.getElementById('agregar');
-
-        function createPersonalItem() {
-            const item = document.createElement('div');
-            item.className = 'grid grid-cols-5 gap-4 items-center';
-            item.innerHTML = `
-                <input type="text" class="border p-2 rounded" placeholder="Nombre">
-                <input type="text" class="border p-2 rounded" placeholder="Cuenta Bancaria">
-                <input type="email" class="border p-2 rounded" placeholder="Correo">
-                <input type="tel" class="border p-2 rounded" placeholder="Celular">
-                <div class="flex gap-2">
-                    <button class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Editar</button>
-                    <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Eliminar</button>
-                </div>
-            `;
-            personalList.appendChild(item);
-        }
-
-        agregarBtn.addEventListener('click', function() {
-            // Redirige a la página "nuevotrabajador.html"
-            window.location.href = 'nuevotrabajador.html';
-        });
-
-        // Add initial items
-        for (let i = 0; i < 4; i++) {
-            createPersonalItem();
-        }
-    </script>
 </body>
 </html>

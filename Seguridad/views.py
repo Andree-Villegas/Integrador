@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Usuario  # Asegúrate de que 'Usuario' es tu modelo correcto
-
+from .models import Usuario, Trabajador  # Asegúrate de que 'Usuario' es tu modelo correcto
+from .forms import TrabajadorForm
 def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -25,7 +25,38 @@ def dashboard_view(request):
     return render(request, 'dashboard.html')
 
 def trabajadores_view(request):
-    return render(request, 'trabajadores.html')
+    trabajadores = Trabajador.objects.all()
+    return render(request, 'trabajadores.html', {'trabajadores': trabajadores})
+
+def nuevotrabajador_view(request):
+    if request.method == 'POST':
+        nombres = request.POST.get('nombres')
+        apellidos = request.POST.get('apellidos')
+        numtarjeta = request.POST.get('numtarjeta')
+        email = request.POST.get('email')
+        numtelefono = request.POST.get('numtelefono')
+
+        trabajador = Trabajador(nombres=nombres, apellidos=apellidos, numtarjeta=numtarjeta, email=email, numtelefono=numtelefono)
+        trabajador.save()  # Guardar el trabajador manualmente
+        print("Trabajador guardado correctamente")
+        return redirect('trabajadores')  # Redirige a la lista de trabajadores
+    return render(request, 'nuevotrabajador.html')
+
+def editar_trabajador(request, id):
+    trabajador = Trabajador.objects.get(IDtrabajador=id)  # Obtener el trabajador por ID
+    if request.method == 'POST':
+        form = TrabajadorForm(request.POST, instance=trabajador)
+        if form.is_valid():
+            form.save()  # Guarda los cambios en la base de datos
+            return redirect('trabajadores')  # Redirige de nuevo a la página de trabajadores
+    else:
+        form = TrabajadorForm(instance=trabajador)
+    return render(request, 'editar_trabajador.html', {'form': form})
+
+def eliminar_trabajador(request, id):
+    trabajador = Trabajador.objects.get(IDtrabajador=id)
+    trabajador.delete()
+    return redirect('trabajadores')
 
 def clientes_view(request):
     return render(request, 'clientes.html')
@@ -47,9 +78,6 @@ def tokens_view(request):
 
 def monitoreo_view(request):
     return render(request, 'monitoreo.html')
-
-def nuevotrabajador_view(request):
-    return render(request, 'nuevotrabajador.html')
 
 def nuevocomprador_view(request):
     return render(request, 'nuevocomprador.html')
