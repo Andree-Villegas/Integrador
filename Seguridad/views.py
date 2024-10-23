@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Usuario, Trabajador  # Asegúrate de que 'Usuario' es tu modelo correcto
+from .models import Usuario, Trabajador  
 from .forms import TrabajadorForm
 def login_view(request):
     if request.method == 'POST':
@@ -8,12 +8,9 @@ def login_view(request):
 
         if email and contrasena:
             try:
-                # Verificar el usuario en la base de datos sin asignar a una variable
                 Usuario.objects.get(email=email, contrasena=contrasena)
-                # Redirigir a la selección de modo
                 return redirect('modo')
             except Usuario.DoesNotExist:
-                # Si no existe el usuario, mostrar error
                 return render(request, 'login.html', {'error': 'Correo o contraseña incorrectos.'})
 
     return render(request, 'login.html')
@@ -37,13 +34,13 @@ def nuevotrabajador_view(request):
         numtelefono = request.POST.get('numtelefono')
 
         trabajador = Trabajador(nombres=nombres, apellidos=apellidos, numtarjeta=numtarjeta, email=email, numtelefono=numtelefono)
-        trabajador.save()  # Guardar el trabajador manualmente
+        trabajador.save()  # Guarda el trabajador manualmente
         print("Trabajador guardado correctamente")
         return redirect('trabajadores')  # Redirige a la lista de trabajadores
     return render(request, 'nuevotrabajador.html')
 
 def editar_trabajador(request, id):
-    trabajador = Trabajador.objects.get(IDtrabajador=id)  # Obtener el trabajador por ID
+    trabajador = Trabajador.objects.get(IDtrabajador=id)  # Obtiene el trabajador por ID
     if request.method == 'POST':
         form = TrabajadorForm(request.POST, instance=trabajador)
         if form.is_valid():
